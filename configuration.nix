@@ -55,6 +55,36 @@
 
     displayManager = {
       defaultSession = "none+i3";
+      lightdm = {
+        enable = true;
+        background = "#000000";
+        greeters = {
+          mini = {
+            user = "zach";
+            enable = true;
+            extraConfig = ''
+              [greeter]
+              show-password-label = false
+              show-input-cursor = false
+              [greeter-theme]
+              font = Sans
+              font-size = 1em
+              font-weight = bold
+              font-style = normal
+              text-color = "#ffffff"
+              background-color = "#0a1b31"
+              window-color = "#27aae1"
+              border-color = "#27aae1"
+              border-width = 0px
+              layout-space = 15
+              password-color = "#ffffff"
+              password-background-color = "#27aae1"
+              password-border-color = "#27aae1"
+              password-border-width = 0px
+            '';
+          };
+        };
+      };
     };
 
     windowManager.i3 = {
@@ -68,6 +98,7 @@
         i3lock #default i3 screen locker
         i3blocks #if you are planning on using i3blocks over i3status
         polybar
+        xss-lock
      ];
     };
   };
@@ -191,7 +222,10 @@
   }];
 
   # Prevent sleep on laptop lid close
-  #services.logind.lidSwitch = "ignore";
+  services.logind = {
+    lidSwitch = "lock";
+    extraConfig = "IdleAction=lock";
+  };
 
   # Prevent nix-direnv cached shells from being gabage-collected
   nix.extraOptions = ''
@@ -225,5 +259,11 @@
     dates = "weekly";
     options = "--delete-older-than 21d";
   };
+
+  programs.xss-lock = {
+    enable = true;
+    lockerCommand = "${pkgs.i3lock}/bin/i3lock -c #0a1b31 -u";
+  };
+
 }
 
