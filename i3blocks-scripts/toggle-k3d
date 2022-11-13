@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+hasRunningNode="false"
+k3d cluster list | grep "[1-9]\/[1-9]" > /dev/null
+
+if [ "$?" = "0" ]; then
+  hasRunningNode="true"
+fi
+if [ "$button" ]; then
+  if [ "$hasRunningNode" = "true" ]; then
+    k3d cluster stop -a &
+  else
+    k3d cluster start -a &
+  fi
+  echo "[K3D ...]"
+  exit 0
+fi
+
+color="#d16f6f"
+msg="[K3D OFF]"
+if [ "$hasRunningNode" = "true" ]; then
+  msg="[K3D ON]"
+  color="#00FF00"
+fi
+
+echo "$msg" # full text
+echo "$msg" # short text
+echo $color # color
+
+

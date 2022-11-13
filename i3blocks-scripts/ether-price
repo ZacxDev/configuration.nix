@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+url="https://api.etherscan.io/api?module=stats&action=ethprice&apikey=5WSU3HKIQAYSEZNHBRNVB16K1CIEC81X5E"
+CONV=$(curl $url | jq .result.ethusd)
+
+echo "ETHUSD ${CONV//\"/}" # full text
+echo "$CONV" # short text
+#echo "#00FF00" # color
+
+
