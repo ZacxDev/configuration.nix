@@ -163,18 +163,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    st
     acpi
     iw
     lm_sensors
+  ];
+
+  environment.defaultPackages = with pkgs; [
     alacritty
+    discord
+    tdesktop
     brave
     i3-resurrect
     kube3d
     git
     bc
-    discord
-    tdesktop
   ];
 
   programs.light.enable = true;
