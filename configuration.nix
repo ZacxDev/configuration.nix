@@ -177,6 +177,7 @@
     kube3d
     git
     bc
+    htop
   ];
 
   programs.light.enable = true;
