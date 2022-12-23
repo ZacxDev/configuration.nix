@@ -181,6 +181,10 @@
     htop
   ];
 
+  environment.extraInit = ''
+  export I3CONFIG_DEFAULT_TERMINAL="alacritty"
+  '';
+
   programs.light.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
