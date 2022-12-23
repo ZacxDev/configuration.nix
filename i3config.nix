@@ -48,7 +48,8 @@ bindsym $mod+Return exec [ ! "$I3CONFIG_DEFAULT_TERMINAL" = "" ] && $I3CONFIG_DE
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+set $dmenu_cmd dmenu_path | grep "$([ ! "$I3CONFIG_DMENU_INCLUDE" = "" ] && echo $I3CONFIG_DMENU_INCLUDE | sed -e "s/ /\\\\\|/g" || echo "")" | dmenu $@ | $SHELL &
+bindsym $mod+d exec --no-startup-id $dmenu_cmd
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a

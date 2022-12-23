@@ -182,6 +182,7 @@
   ];
 
   environment.extraInit = ''
+  export I3CONFIG_DMENU_INCLUDE="firefox brave discord alacritty slack"
   export I3CONFIG_DEFAULT_TERMINAL="alacritty"
   '';
 
