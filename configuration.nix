@@ -170,14 +170,18 @@
   ];
 
   environment.defaultPackages = with pkgs; [
+    i3-resurrect
+
     alacritty
+
     discord
     tdesktop
     brave
-    i3-resurrect
+    nyxt
+
     kube3d
+
     git
-    bc
     htop
   ];
 
