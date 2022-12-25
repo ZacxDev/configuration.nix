@@ -229,4 +229,6 @@ mode "restore" {
 }
 
 bindsym $mod+n mode "restore"
+
+bindsym $mod+b exec --no-startup-id brave
 ''
